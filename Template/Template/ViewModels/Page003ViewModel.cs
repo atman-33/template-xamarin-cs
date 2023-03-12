@@ -1,19 +1,25 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Navigation.Xaml;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Template.Services;
+using System.Threading.Tasks;
+using Template.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.Net.Mobile.Forms;
 
 namespace Template.ViewModels
 {
-    /// 手順メモ
-    /// 1:ソリューション > NuGetから、以下のパッケージをインストール
-    ///    - ZXing.Net.Mobile
-    ///    - ZXing.Net.Mobile.Forms
+    //// 手順メモ
+    //// 1:ソリューション > NuGetから、以下のパッケージをインストール
+    ////    - ZXing.Net.Mobile
+    ////    - ZXing.Net.Mobile.Forms
+    //// 2:https://takataka430.hatenablog.com/entry/2019/03/21/184259を参考にコード実装
 
     /// <summary>
     /// QRコードを読み込み
@@ -31,7 +37,7 @@ namespace Template.ViewModels
         {
             _pageDialogService = pageDialogService;
 
-            ScanButton = new DelegateCommand(ScanButtonExecute);
+            OnScan = new DelegateCommand(OnScanExecute);
 
         }
 
@@ -39,7 +45,7 @@ namespace Template.ViewModels
         #region //// 1. Property Data Binding
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        private string _scanLabel;
+        private string _scanLabel = string.Empty;
         public string ScanLabel
         {
             get { return _scanLabel; }
@@ -52,23 +58,10 @@ namespace Template.ViewModels
         #region //// 2. Event Binding (DelegateCommand)
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        public DelegateCommand ScanButton { get; }
+        public DelegateCommand OnScan { get; }
 
-        private async void ScanButtonExecute()
+        private async void OnScanExecute()
         {
-            try
-            {
-                var scanner = DependencyService.Get<IQrScanningService>();
-                var result = await scanner.ScanAsync();
-                if (result != null)
-                {
-                    ScanLabel = result;
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message,e);
-            }
         }
 
         #endregion

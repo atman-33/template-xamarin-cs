@@ -1,5 +1,7 @@
 using Prism;
 using Prism.Ioc;
+using Prism.Navigation;
+using Prism.Unity;
 using Template.ViewModels;
 using Template.Views;
 using Xamarin.Essentials.Implementation;

@@ -6,10 +6,10 @@ using Xamarin.Forms;
 
 namespace Template.ViewModels
 {
-    /// 手順メモ
-    /// 1:ソリューション > NuGetから、Xam.Plugin.Media をインストール
-    /// 2:インストール後に表示される readme.txt を参考に各種ファイルを設定
-    /// 3:https://github.com/jamesmontemagno/MediaPlugin を参考にコード実装
+    //// 手順メモ
+    //// 1:ソリューション > NuGetから、Xam.Plugin.Media をインストール
+    //// 2:インストール後に表示される readme.txt を参考に各種ファイルを設定
+    //// 3:https://github.com/jamesmontemagno/MediaPlugin を参考にコード実装
 
     /// <summary>
     /// カメラを起動し画像を保存
