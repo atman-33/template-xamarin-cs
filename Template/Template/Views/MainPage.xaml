@@ -5,18 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <Thickness x:Key="pageButtonMargin">0,5,5,5</Thickness>
+    </ContentPage.Resources>
+
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
 
-        <Label Text="Page1:画面遷移、メッセージボックス、デバイス情報取得" />
-        <Button Command="{Binding Page001ViewButton}" Text="Page1" />
+        <StackLayout Margin="{StaticResource pageButtonMargin}">
+            <Label Text="Page1:画面遷移、ダイアログ、デバイス情報取得" />
+            <Button Command="{Binding Page001ViewButton}" Text="Page1" />
+        </StackLayout>
 
-        <Label Text="{Binding LabelC}" />
-        <Button Command="{Binding ButtonC}" Text="button c" />
+        <StackLayout Margin="{StaticResource pageButtonMargin}">
+            <Label Text="Page2:カメラ起動" />
+            <Button Command="{Binding Page002ViewButton}" Text="Page2" />
+        </StackLayout>
 
-        <Button Command="{Binding NextCommand}" Text="next page" />
-
-        <Button Command="{Binding MessageCommand}" Text="message" />
 
     </StackLayout>
 

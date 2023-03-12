@@ -54,6 +54,7 @@ namespace Template.ViewModels
         public DelegateCommand NextCommand { get; set; }
         private void PageBShow()
         {
+            /// 画面遷移用パラメータはConditionsで管理
             var param = new NavigationParameters
             {
                 {nameof(PageBCondition),new PageBCondition("XXXX") }

@@ -23,25 +23,15 @@ namespace Template.ViewModels
         {
             _pageDialogService = pageDialogService;
 
-            ButtonC = new DelegateCommand(SetText);
-            NextCommand = new DelegateCommand(PageBShow);
-            MessageCommand = new DelegateCommand(MessageCommandShow);
+            Page001ViewButton = new DelegateCommand(Page001ViewButtonExecute);
+            Page002ViewButton = new DelegateCommand(Page002ViewButtonExecute);
 
             Title = "Main Page";
-
-            LabelC = "DDD";
         }
 
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
         #region //// 1. Property Data Binding
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-
-        private string _labelC = string.Empty;
-        public string LabelC
-        {
-            get { return _labelC; }
-            set { SetProperty(ref _labelC, value); }
-        }
 
         #endregion
 
@@ -49,29 +39,16 @@ namespace Template.ViewModels
         #region //// 2. Event Binding (DelegateCommand)
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        public DelegateCommand ButtonC { get; set; }
-        private void SetText()
+        public DelegateCommand Page001ViewButton { get; set; }
+        private void Page001ViewButtonExecute()
         {
-            LabelC = "EEE";
+            base.NavigationService.NavigateAsync(nameof(Page001View));
         }
 
-        public DelegateCommand NextCommand { get; set; }
-        private void PageBShow()
+        public DelegateCommand Page002ViewButton { get; set; }
+        private void Page002ViewButtonExecute()
         {
-            var param = new NavigationParameters
-            {
-                {nameof(PageBCondition),new PageBCondition("XXXX") }
-            };
-
-            base.NavigationService.NavigateAsync(nameof(PageBView), param);
-        }
-
-        public DelegateCommand MessageCommand { get; set; }
-        private void MessageCommandShow()
-        {
-            _pageDialogService.DisplayAlertAsync("タイトル", "メッセージ", "OK");
-
-            Title = DependencyService.Get<IDevice>().GetDeviceName();
+            base.NavigationService.NavigateAsync(nameof(Page002View));
         }
 
         #endregion
