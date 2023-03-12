@@ -1,44 +1,49 @@
-﻿using Plugin.Media;
-using Prism.Commands;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Template.Services;
 using Xamarin.Forms;
 
 namespace Template.ViewModels
 {
     /// 手順メモ
-    /// 1:ソリューション > NuGetから、Xam.Plugin.Media をインストール
-    /// 2:インストール後に表示される readme.txt を参考に各種ファイルを設定
-    /// 3:https://github.com/jamesmontemagno/MediaPlugin を参考にコード実装
+    /// 1:ソリューション > NuGetから、以下のパッケージをインストール
+    ///    - ZXing.Net.Mobile
+    ///    - ZXing.Net.Mobile.Forms
 
     /// <summary>
-    /// カメラを起動し画像を保存
+    /// QRコードを読み込み
     /// </summary>
-	public class Page002ViewModel : ViewModelBase
-    {
+    public class Page003ViewModel : ViewModelBase
+	{
         /// <summary>
         /// ダイアログサービス
         /// </summary>
         private IPageDialogService _pageDialogService;
 
-        public Page002ViewModel(INavigationService navigationService,
+        public Page003ViewModel(INavigationService navigationService,
             IPageDialogService pageDialogService)
             : base(navigationService)
         {
             _pageDialogService = pageDialogService;
 
-            CameraStartButton = new DelegateCommand(CameraStartButtonExecute);
+            ScanButton = new DelegateCommand(ScanButtonExecute);
+
         }
 
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
         #region //// 1. Property Data Binding
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        private ImageSource _myImageSource;
-        public ImageSource MyImageSource
+        private string _scanLabel;
+        public string ScanLabel
         {
-            get { return _myImageSource; }
-            set { SetProperty(ref _myImageSource, value); }
+            get { return _scanLabel; }
+            set { SetProperty(ref _scanLabel, value); }
         }
 
         #endregion
@@ -47,34 +52,23 @@ namespace Template.ViewModels
         #region //// 2. Event Binding (DelegateCommand)
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        public DelegateCommand CameraStartButton { get; }
+        public DelegateCommand ScanButton { get; }
 
-        private async void CameraStartButtonExecute()
+        private async void ScanButtonExecute()
         {
-            await CrossMedia.Current.Initialize();
-
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            try
             {
-                await _pageDialogService.DisplayAlertAsync("No Camera", ":( No camera available.", "OK");
-                return;
+                var scanner = DependencyService.Get<IQrScanningService>();
+                var result = await scanner.ScanAsync();
+                if (result != null)
+                {
+                    ScanLabel = result;
+                }
             }
-
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            catch (Exception e)
             {
-                Directory = "Sample",
-                Name = "test.jpg"
-            });
-
-            if (file == null)
-                return;
-
-            await _pageDialogService.DisplayAlertAsync("File Location", file.Path, "OK");
-
-            MyImageSource = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                return stream;
-            });
+                throw new Exception(e.Message,e);
+            }
         }
 
         #endregion

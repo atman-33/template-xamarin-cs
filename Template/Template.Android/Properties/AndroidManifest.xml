@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.appname">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+
+	<!-- QR読み込みに必要 ここから -->
+	<uses-permission android:name = "android.permission.CAMERA" />
+	<uses-permission android:name = "android.permission.FLASHLIGHT" />
+	<!-- QR読み込みに必要 ここまで -->
+
 	<application android:label="@string/app_name" android:icon="@mipmap/icon">
 
+		<!-- カメラ起動に必要 ここから -->
 		<!-- android.support.v4.content.FileProviderでエラー発生するため、
-		androidx.core.content.FileProvider に変更-->
-		
+			 androidx.core.content.FileProvider に変更-->
 		<provider android:name="androidx.core.content.FileProvider"
 				android:authorities="${applicationId}.fileprovider"
 				android:exported="false"
@@ -13,5 +19,7 @@
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS"
 				android:resource="@xml/file_paths"></meta-data>
 		</provider>
+		<!-- カメラ起動に必要 ここまで -->
+
 	</application>
 </manifest>

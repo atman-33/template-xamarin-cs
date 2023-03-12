@@ -21,6 +21,10 @@
             <Button Command="{Binding Page002ViewButton}" Text="Page2" />
         </StackLayout>
 
+        <StackLayout Margin="{StaticResource pageButtonMargin}">
+            <Label Text="Page3:QRコード読み込み" />
+            <Button Command="{Binding Page003ViewButton}" Text="Page3" />
+        </StackLayout>
 
     </StackLayout>
 

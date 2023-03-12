@@ -25,6 +25,7 @@ namespace Template.ViewModels
 
             Page001ViewButton = new DelegateCommand(Page001ViewButtonExecute);
             Page002ViewButton = new DelegateCommand(Page002ViewButtonExecute);
+            Page003ViewButton = new DelegateCommand(Page003ViewButtonExecute);
 
             Title = "Main Page";
         }
@@ -49,6 +50,11 @@ namespace Template.ViewModels
         private void Page002ViewButtonExecute()
         {
             base.NavigationService.NavigateAsync(nameof(Page002View));
+        }
+        public DelegateCommand Page003ViewButton { get; set; }
+        private void Page003ViewButtonExecute()
+        {
+            base.NavigationService.NavigateAsync(nameof(Page003View));
         }
 
         #endregion
