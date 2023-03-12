@@ -1,19 +1,15 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Template.Conditions;
 
 namespace Template.ViewModels
 {
-	public class PageBViewModel : ViewModelBase
-	{
-        public PageBViewModel(INavigationService navigationService)
-            : base(navigationService)
+    /// <summary>
+    /// ソースメモ用のクラス。本体アプリでは利用しない。
+    /// </summary>
+    class Temp
+    {
+        public Temp()
         {
-
+            XXX = new DelegateCommand(XXXExecute);
         }
 
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -26,6 +22,12 @@ namespace Template.ViewModels
         #region //// 2. Event Binding (DelegateCommand)
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
+        public DelegateCommand XXX { get; }
+
+        private void XXXExecute()
+        {
+        }
+
         #endregion
 
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -37,16 +39,6 @@ namespace Template.ViewModels
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
         #region //// Screen transition
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            var val = parameters[nameof(PageBCondition)] as PageBCondition;
-            if(val == null)
-            {
-                throw new ArgumentException(nameof(PageBCondition));
-            }
-
-            Title = val.Title;
-        }
 
         #endregion
 

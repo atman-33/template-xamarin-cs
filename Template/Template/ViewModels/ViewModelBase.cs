@@ -33,9 +33,12 @@ namespace Template.ViewModels
 
         }
 
+        /// <summary>
+        /// ページが開いた後の処理
+        /// </summary>
+        /// <param name="parameters"></param>
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-
         }
 
         public virtual void Destroy()

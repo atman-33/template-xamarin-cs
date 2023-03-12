@@ -29,6 +29,7 @@ namespace Template
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageBView, PageBViewModel>();
+            containerRegistry.RegisterForNavigation<Page001View, Page001ViewModel>();
         }
     }
 }

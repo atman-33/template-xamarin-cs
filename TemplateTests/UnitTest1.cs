@@ -9,7 +9,7 @@ namespace TemplateTests
         [TestMethod]
         public void ‹N“®Žž‚ÍCCC‚Åƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çEEE‚É‚È‚é()
         {
-            var vm = new MainPageViewModel(null);
+            var vm = new MainPageViewModel(null,null);
             Assert.AreEqual("DDD", vm.LabelC);
 
             vm.ButtonC.Execute();

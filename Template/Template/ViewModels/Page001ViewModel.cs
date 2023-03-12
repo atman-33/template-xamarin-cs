@@ -2,10 +2,6 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Template.Conditions;
 using Template.Objects;
 using Template.Views;
@@ -13,11 +9,11 @@ using Xamarin.Forms;
 
 namespace Template.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
-    {
+	public class Page001ViewModel : ViewModelBase
+	{
         private IPageDialogService _pageDialogService;
 
-        public MainPageViewModel(INavigationService navigationService,
+        public Page001ViewModel(INavigationService navigationService,
             IPageDialogService pageDialogService)
             : base(navigationService)
         {
@@ -27,7 +23,7 @@ namespace Template.ViewModels
             NextCommand = new DelegateCommand(PageBShow);
             MessageCommand = new DelegateCommand(MessageCommandShow);
 
-            Title = "Main Page";
+            Title = "Page1";
 
             LabelC = "DDD";
         }
