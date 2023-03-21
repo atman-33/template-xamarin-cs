@@ -1,31 +1,21 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Template.Conditions;
-using Template.Objects;
 using Template.Views;
-using Xamarin.Forms;
 
 namespace Template.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private IPageDialogService _pageDialogService;
-
-        public MainPageViewModel(INavigationService navigationService,
+        public MainPageViewModel(
+            INavigationService navigationService,
             IPageDialogService pageDialogService)
-            : base(navigationService)
+            : base(navigationService, pageDialogService)
         {
-            _pageDialogService = pageDialogService;
-
             Page001ViewButton = new DelegateCommand(Page001ViewButtonExecute);
             Page002ViewButton = new DelegateCommand(Page002ViewButtonExecute);
             Page003ViewButton = new DelegateCommand(Page003ViewButtonExecute);
+            Page004ViewButton = new DelegateCommand(Page004ViewButtonExecute);
 
             Title = "Main Page";
         }
@@ -57,10 +47,17 @@ namespace Template.ViewModels
         {
             base.NavigationService.NavigateAsync(nameof(Page002View));
         }
+
         public DelegateCommand Page003ViewButton { get; set; }
         private void Page003ViewButtonExecute()
         {
             base.NavigationService.NavigateAsync(nameof(Page003View));
+        }
+
+        public DelegateCommand Page004ViewButton { get; set; }
+        private void Page004ViewButtonExecute()
+        {
+            base.NavigationService.NavigateAsync(nameof(Page004View));
         }
 
         #endregion
