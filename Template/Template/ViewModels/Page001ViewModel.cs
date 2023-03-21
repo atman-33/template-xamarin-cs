@@ -11,14 +11,11 @@ namespace Template.ViewModels
 {
 	public class Page001ViewModel : ViewModelBase
 	{
-        private IPageDialogService _pageDialogService;
-
-        public Page001ViewModel(INavigationService navigationService,
+        public Page001ViewModel(
+            INavigationService navigationService,
             IPageDialogService pageDialogService)
-            : base(navigationService)
+            : base(navigationService, pageDialogService)
         {
-            _pageDialogService = pageDialogService;
-
             ButtonC = new DelegateCommand(SetText);
             NextCommand = new DelegateCommand(PageBShow);
             MessageCommand = new DelegateCommand(MessageCommandShow);
@@ -73,7 +70,7 @@ namespace Template.ViewModels
         public DelegateCommand MessageCommand { get; set; }
         private void MessageCommandShow()
         {
-            _pageDialogService.DisplayAlertAsync("タイトル", "メッセージ", "OK");
+            PageDialogService.DisplayAlertAsync("タイトル", "メッセージ", "OK");
 
             Title = DependencyService.Get<IDevice>().GetDeviceName();
         }

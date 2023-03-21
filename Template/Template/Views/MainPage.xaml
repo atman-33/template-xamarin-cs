@@ -26,6 +26,11 @@
             <Button Command="{Binding Page003ViewButton}" Text="Page3" />
         </StackLayout>
 
+        <StackLayout Margin="{StaticResource pageButtonMargin}">
+            <Label Text="Page4:入力内容をDB登録" />
+            <Button Command="{Binding Page004ViewButton}" Text="Page4" />
+        </StackLayout>
+
     </StackLayout>
 
 </ContentPage>

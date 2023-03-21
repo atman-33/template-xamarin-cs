@@ -2,9 +2,9 @@
 
 namespace Template.Views
 {
-    public partial class Page003View : ContentPage
+    public partial class Page004View : ContentPage
     {
-        public Page003View()
+        public Page004View()
         {
             InitializeComponent();
         }

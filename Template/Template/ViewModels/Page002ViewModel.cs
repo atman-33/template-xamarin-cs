@@ -16,17 +16,11 @@ namespace Template.ViewModels
     /// </summary>
 	public class Page002ViewModel : ViewModelBase
     {
-        /// <summary>
-        /// ダイアログサービス
-        /// </summary>
-        private IPageDialogService _pageDialogService;
-
-        public Page002ViewModel(INavigationService navigationService,
+        public Page002ViewModel(
+            INavigationService navigationService,
             IPageDialogService pageDialogService)
-            : base(navigationService)
+            : base(navigationService, pageDialogService)
         {
-            _pageDialogService = pageDialogService;
-
             CameraStartButton = new DelegateCommand(CameraStartButtonExecute);
         }
 
@@ -61,7 +55,7 @@ namespace Template.ViewModels
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
-                await _pageDialogService.DisplayAlertAsync("No Camera", ":( No camera available.", "OK");
+                await PageDialogService.DisplayAlertAsync("No Camera", ":( No camera available.", "OK");
                 return;
             }
 
@@ -74,7 +68,7 @@ namespace Template.ViewModels
             if (file == null)
                 return;
 
-            await _pageDialogService.DisplayAlertAsync("File Location", file.Path, "OK");
+            await PageDialogService.DisplayAlertAsync("File Location", file.Path, "OK");
 
             MyImageSource = ImageSource.FromStream(() =>
             {

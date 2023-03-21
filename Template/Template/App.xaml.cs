@@ -34,6 +34,8 @@ namespace Template
             containerRegistry.RegisterForNavigation<Page001View, Page001ViewModel>();
             containerRegistry.RegisterForNavigation<Page002View, Page002ViewModel>();
             containerRegistry.RegisterForNavigation<Page003View, Page003ViewModel>();
+            containerRegistry.RegisterForNavigation<ScannerView, ScannerViewModel>();
+            containerRegistry.RegisterForNavigation<Page004View, Page004ViewModel>();
         }
     }
 }
