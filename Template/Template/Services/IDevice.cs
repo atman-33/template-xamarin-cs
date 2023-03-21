@@ -1,5 +1,5 @@
 ﻿
-namespace Template.Objects
+namespace Template.Services
 {
     /// 手順メモ
     /// 1:IDeviceインターフェースを作成（本クラス）

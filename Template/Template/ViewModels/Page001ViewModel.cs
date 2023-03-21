@@ -3,7 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 using Template.Conditions;
-using Template.Objects;
+using Template.Services;
 using Template.Views;
 using Xamarin.Forms;
 

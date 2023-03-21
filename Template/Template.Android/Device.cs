@@ -1,4 +1,4 @@
-﻿using Template.Objects;
+﻿using Template.Services;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Template.Droid.Device))]
 namespace Template.Droid
