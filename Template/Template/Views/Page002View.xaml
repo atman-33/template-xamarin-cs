@@ -6,9 +6,11 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <StackLayout>
-        <Button Command="{Binding CameraStartButton}" Text="カメラ起動" />
-        <Image x:Name="MyImage" Source="{Binding MyImageSource}" />
-    </StackLayout>
+    <Grid Margin="{StaticResource gridMargin}">
+        <StackLayout>
+            <Button Command="{Binding CameraStartButton}" Text="カメラ起動" />
+            <Image x:Name="MyImage" Source="{Binding MyImageSource}" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

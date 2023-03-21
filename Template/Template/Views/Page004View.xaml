@@ -6,21 +6,33 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <StackLayout>
-        <StackLayout Margin="20">
-            <Label Text="作業者グループコード" />
-            <Entry
-                Keyboard="Text"
-                Placeholder="作業者グループコード"
-                Text="{Binding WorkerGroupCodeText}" />
-        </StackLayout>
+    <ContentPage.Resources>
+        <Thickness x:Key="stackLayoutMargin">10</Thickness>
+    </ContentPage.Resources>
 
-        <StackLayout Margin="20">
-            <Label Text="作業者グループ名称" />
-            <Entry
-                Keyboard="Text"
-                Placeholder="作業者グループ名称"
-                Text="{Binding WorkerGroupNameText}" />
+    <Grid Margin="{StaticResource gridMargin}">
+
+        <StackLayout VerticalOptions="CenterAndExpand">
+
+            <StackLayout Margin="{StaticResource stackLayoutMargin}">
+                <Label Text="作業者グループコード" />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="作業者グループコード"
+                    Text="{Binding WorkerGroupCodeText}" />
+            </StackLayout>
+
+            <StackLayout Margin="{StaticResource stackLayoutMargin}">
+                <Label Text="作業者グループ名称" />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="作業者グループ名称"
+                    Text="{Binding WorkerGroupNameText}" />
+            </StackLayout>
+
+            <StackLayout Margin="{StaticResource stackLayoutMargin}">
+                <Button Command="{Binding SaveButton}" Text="保存" />
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </Grid>
 </ContentPage>

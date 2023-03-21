@@ -9,5 +9,8 @@
 
         <!--  Application resource dictionary  -->
 
+        <!-- スタイルファイル参照 -->
+        <ResourceDictionary Source="./Styles/StyleDictionary.xaml"/>
+
     </Application.Resources>
 </prism:PrismApplication>

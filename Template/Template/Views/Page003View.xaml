@@ -6,12 +6,14 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <StackLayout>
-        <Button Command="{Binding ScannerViewButton}" Text="バーコード読み込み開始" />
+    <Grid Margin="{StaticResource gridMargin}">
+        <StackLayout>
+            <Button Command="{Binding ScannerViewButton}" Text="バーコード読み込み開始" />
 
-        <StackLayout Orientation="Horizontal">
-            <Label Text="バーコード読み込み結果: " />
-            <Label Text="{Binding ScannedResultLabel}" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="バーコード読み込み結果: " />
+                <Label Text="{Binding ScannedResultLabel}" />
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </Grid>
 </ContentPage>
