@@ -1,17 +1,30 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Template.Domain;
+using Xamarin.Essentials;
 
 namespace Template.ViewModels
 {
-    public class Page004ViewModel : BindableBase
-    {
-        public Page004ViewModel()
-        {
+    //// 手順メモ
+    //// <Xamarin.Essentials>
+    //// 1. ソリューションのNugetパッケージから Xamarin.Essentials をインストール
+    //// 2. Template.Android の MainActivity.cs に Xamarin.Essentials を利用するためのコードを追加
+    //// 3. Template.Domain の Shared.cs に設定値を実装
 
+    /// <summary>
+    /// DB接続、操作用のViewModel
+    /// </summary>
+    public class Page004ViewModel : ViewModelBase
+    {
+        public Page004ViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
+            : base(navigationService, pageDialogService)
+        {
+            UpdateSettingsButton = new DelegateCommand(UpdateSettingsButtonExecute);
         }
 
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -24,11 +37,11 @@ namespace Template.ViewModels
         #region //// Property Data Binding
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        private string _isFakeLabel = Convert.ToString(Shared.IsFake);
-        public string IsFakeLabel
+        private string _oracleUserText = Shared.OracleUser;
+        public string OracleUserText
         {
-            get { return _isFakeLabel; }
-            set { SetProperty(ref _isFakeLabel, value); }
+            get { return _oracleUserText; }
+            set { SetProperty(ref _oracleUserText, value); }
         }
 
         #endregion
@@ -37,10 +50,13 @@ namespace Template.ViewModels
         #region //// Event Binding (DelegateCommand)
         //// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-        public DelegateCommand XXX { get; }
+        public DelegateCommand UpdateSettingsButton { get; }
 
-        private void XXXExecute()
+        private void UpdateSettingsButtonExecute()
         {
+            Shared.OracleUser = OracleUserText;
+
+            PageDialogService.DisplayAlertAsync("", "Settingsを更新しました。", "OK");
         }
 
         #endregion

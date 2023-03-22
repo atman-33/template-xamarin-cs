@@ -1,23 +1,37 @@
-﻿namespace Template.Domain
+﻿using Xamarin.Essentials;
+
+namespace Template.Domain
 {
-    /// <summary>
-    /// Shared
-    /// </summary>
     public static class Shared
     {
-        /// <summary>
-        /// Fakeの時Trure（1:Fake）
-        /// </summary>
-        public static bool IsFake { get; } = true;
+        public static bool IsFake
+        {
+            get => Preferences.Get(nameof(IsFake), false);
+            set => Preferences.Set(nameof(IsFake), value);
+        }
 
-        /// <summary>
-        /// SQLite 接続子
-        /// </summary>
-        public static string SQLiteConnectionString { get; } = @"C:\Repos\template-xamarin-cs\Fake\SQLite.db";
+        public static string SQLiteConnectionString
+        {
+            get => Preferences.Get(nameof(SQLiteConnectionString), @"C:\Repos\template-xamarin-cs\Fake\SQLite.db");
+            set => Preferences.Set(nameof(SQLiteConnectionString), value);
+        }
 
-        public static string OracleUser { get; } = "atman";
-        public static string OraclePassword { get; } = "atman";
-        public static string OracleDataSource { get; } 
-            = @"(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = TESTDB.GRAWOR)))";
+        public static string OracleUser
+        {
+            get => Preferences.Get(nameof(OracleUser), "atman");
+            set => Preferences.Set(nameof(OracleUser), value);
+        }
+
+        public static string OraclePassword
+        {
+            get => Preferences.Get(nameof(OraclePassword), "atman");
+            set => Preferences.Set(nameof(OraclePassword), value);
+        }
+
+        public static string OracleDataSource
+        {
+            get => Preferences.Get(nameof(OracleDataSource), @"(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XEPDB1)))");
+            set => Preferences.Set(nameof(OracleDataSource), value);
+        }
     }
 }

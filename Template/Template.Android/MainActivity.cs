@@ -15,18 +15,24 @@ namespace Template.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //// Xamarin.Essentials用に追加 ここから
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //// Xamarin.Essentials用に追加 ここまで
 
             //// QRコード読み込み用に追加 ここから
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             //// QRコード読み込み用に追加 ここまで
+
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App(new AndroidInitializer()));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
+            //// Xamarin.Essentials用に追加 ここから
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            //// Xamarin.Essentials用に追加 ここまで
 
             //// QRコード読み込み用に追加 ここから
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);

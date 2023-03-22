@@ -15,9 +15,14 @@
         <StackLayout VerticalOptions="CenterAndExpand">
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="IsFake: " />
-                <Label Text="{Binding IsFakeLabel}" />
+                <Label Text="OracleUser: " />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="oracle user"
+                    Text="{Binding OracleUserText}" />
             </StackLayout>
+
+            <Button Command="{Binding UpdateSettingsButton}" Text="Settings更新" />
 
             <StackLayout Margin="{StaticResource stackLayoutMargin}">
                 <Label Text="作業者グループコード" />
