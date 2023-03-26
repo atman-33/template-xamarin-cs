@@ -19,6 +19,10 @@ namespace Template.ViewModels
     /// <summary>
     /// DB接続、操作用のViewModel
     /// </summary>
+    /// <remarks>
+    /// 【注意点】
+    /// Oracle接続先PCのファイアウォール設定で、受信の規則でポート1521を解放する必要あり
+    /// </remarks>
     public class Page004ViewModel : ViewModelBase
     {
         IWorkerGroupMstRepository _workerGroupMstRepository;
