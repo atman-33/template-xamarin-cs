@@ -28,10 +28,21 @@ namespace Template.Domain
             set => Preferences.Set(nameof(OraclePassword), value);
         }
 
+        public static string OracleHost
+        {
+            get => Preferences.Get(nameof(OracleHost), "192.168.3.16");
+            set => Preferences.Set(nameof(OracleHost), value);
+        }
+
+        public static string OracleServiceName
+        {
+            get => Preferences.Get(nameof(OracleServiceName), "XEPDB1");
+            set => Preferences.Set(nameof(OracleServiceName), value);
+        }
+
         public static string OracleDataSource
         {
-            get => Preferences.Get(nameof(OracleDataSource), @"(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XEPDB1)))");
-            set => Preferences.Set(nameof(OracleDataSource), value);
+            get => $"(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = {OracleHost})(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = {OracleServiceName})))";
         }
     }
 }

@@ -8,6 +8,7 @@
 
     <ContentPage.Resources>
         <Thickness x:Key="stackLayoutMargin">10</Thickness>
+        <x:Double x:Key="labelWidth">150</x:Double>
     </ContentPage.Resources>
 
     <Grid Margin="{StaticResource gridMargin}">
@@ -15,16 +16,79 @@
         <StackLayout VerticalOptions="CenterAndExpand">
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="OracleUser: " />
+                <Label
+                    Text="OracleUser: "
+                    VerticalOptions="Center"
+                    WidthRequest="{StaticResource labelWidth}" />
                 <Entry
                     Keyboard="Text"
                     Placeholder="oracle user"
                     Text="{Binding OracleUserText}" />
             </StackLayout>
 
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="OraclePassword: "
+                    VerticalOptions="Center"
+                    WidthRequest="{StaticResource labelWidth}" />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="oracle password"
+                    Text="{Binding OraclePasswordText}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="OracleHost: "
+                    VerticalOptions="Center"
+                    WidthRequest="{StaticResource labelWidth}" />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="oracle host"
+                    Text="{Binding OracleHostText}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="OracleServiceName: "
+                    VerticalOptions="Center"
+                    WidthRequest="{StaticResource labelWidth}" />
+                <Entry
+                    Keyboard="Text"
+                    Placeholder="oracle service name"
+                    Text="{Binding OracleServiceNameText}" />
+            </StackLayout>
+
+            <Label Text="Oracle接続記述子" />
+            <Label LineBreakMode="WordWrap" Text="{Binding OracleDataSourceText}" />
+
             <Button Command="{Binding UpdateSettingsButton}" Text="Settings更新" />
 
-            <StackLayout Margin="{StaticResource stackLayoutMargin}">
+            <Button Command="{Binding OracleOpenButton}" Text="Oracle接続テスト" />
+
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Color="Gray" />
+
+            <Button Command="{Binding GetWorkerGroupMstEntitiesButton}" Text="WorkerGroupMstEntities更新" />
+
+            <ListView ItemsSource="{Binding WorkerGroupMstEntities}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding WorkerGroupCode.Value}" />
+                                <Label Text="{Binding WorkerGroupName.Value}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <!--<StackLayout Margin="{StaticResource stackLayoutMargin}">
                 <Label Text="作業者グループコード" />
                 <Entry
                     Keyboard="Text"
@@ -42,7 +106,7 @@
 
             <StackLayout Margin="{StaticResource stackLayoutMargin}">
                 <Button Command="{Binding SaveButton}" Text="保存" />
-            </StackLayout>
+            </StackLayout>-->
         </StackLayout>
     </Grid>
 </ContentPage>
